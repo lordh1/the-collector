@@ -4,8 +4,10 @@ import { AppService } from './app.service';
 import { DataModule } from './data/data.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { ClientsModule } from './clients/clients.module';
 import { UsersController } from './users/users.controller';
 import { AuthController } from './auth/auth.controller';
+import { ClientsController } from './clients/clients.controller';
 
 @Module({
   imports: [
@@ -13,8 +15,9 @@ import { AuthController } from './auth/auth.controller';
     DataModule,
     AuthModule,
     UsersModule,
+    ClientsModule,
   ],
-  controllers: [AuthController, UsersController],
+  controllers: [AuthController, UsersController, ClientsController],
   providers: [AppService],
 })
 export class AppModule {}
