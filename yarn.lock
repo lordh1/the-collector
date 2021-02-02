@@ -4666,6 +4666,13 @@ pascalcase@^0.1.1:
   resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
   integrity sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=
 
+passport-hash@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/passport-hash/-/passport-hash-0.6.1.tgz#a27d4768464675d06477f6336e8bd468325a6a73"
+  integrity sha1-on1HaEZGddBkd/YzbovUaDJaanM=
+  dependencies:
+    passport-strategy "1.x.x"
+
 passport-jwt@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/passport-jwt/-/passport-jwt-4.0.0.tgz#7f0be7ba942e28b9f5d22c2ebbb8ce96ef7cf065"
