@@ -6,6 +6,9 @@ export type DataDocument = Data & Document;
 @Schema()
 export class Data {
   @Prop()
+  timestamp: number;
+
+  @Prop()
   name: string;
 
   @Prop()
