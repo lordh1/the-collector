@@ -1,23 +1,30 @@
-FROM node:14-alpine
+FROM ubuntu:18.04
 
 # create destination directory
-RUN mkdir -p /usr/src/nestjs
-WORKDIR /usr/src/nestjs
+WORKDIR /src
 
-# update and install dependency
-RUN apk update && apk upgrade
-RUN apk add git
+
+RUN apt update \
+ && apt install -y \
+    curl \
+    gnupg \
+    gcc \
+    g++ \
+    make \
+ && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+ && apt install -y nodejs \
+ && rm -rf /var/lib/apt/lists/*
 
 # copy the app, note .dockerignore
-COPY . /usr/src/nestjs/
-RUN yarn install
+COPY . /src/
+RUN npm install
 
 # build necessary, even if no static files are needed,
 # since it builds the server as well
-RUN yarn build
+RUN npm run build
 
 # expose 3000 on container
 EXPOSE 3000
 
 # start the app
-CMD [ "yarn", "start:prod" ]
+CMD [ "node", "/src/dist/src/main.js" ]
