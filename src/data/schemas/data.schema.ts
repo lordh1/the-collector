@@ -12,7 +12,13 @@ export class Data {
   name: string;
 
   @Prop()
-  content: string;
+  type: string;
+
+  @Prop()
+  value: number;
+
+  @Prop()
+  text: string;
 }
 
 export const DataSchema = SchemaFactory.createForClass(Data);
