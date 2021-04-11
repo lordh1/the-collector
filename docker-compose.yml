@@ -1,0 +1,9 @@
+version: "0.1"
+
+services:
+  backend:
+    container_name: the-collector-backend
+    build: .
+    dockerfile: Dockerfile
+    ports:
+      - 7001:3000
