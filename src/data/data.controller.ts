@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { HashAuthGuard } from 'src/auth/guards/hash-auth.guard';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { DataService } from './data.service';
@@ -19,5 +19,19 @@ export class DataController {
   @Get()
   async findAll(): Promise<Data[]> {
     return this.dataService.findAll();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(':name/:timestampFrom/:timestampTo')
+  async findByConditions(
+    @Param('name') name: string,
+    @Param('timestampFrom') timestampFrom: number,
+    @Param('timestampTo') timestampTo: number,
+  ): Promise<Data[]> {
+    return this.dataService.findByConditions({
+      name,
+      timestampFrom,
+      timestampTo,
+    });
   }
 }
